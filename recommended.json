@@ -1,0 +1,1042 @@
+{
+  "pack": "water-api-endpoints",
+  "title": "Rivers and water API endpoints",
+  "snapshot": "2026-11-15",
+  "tested": {
+    "min": "2026-11-10",
+    "max": "2026-11-15",
+    "text": "10–15 Nov 2026"
+  },
+  "note": "On the date in last_tested (IST), one GET to the URL, sent with no key, returned HTTP 2xx and a non-empty data body. HTML pages and empty results did not pass. The format column records what came back. This is a test result for that date, not a promise that the URL answers today. Licences, terms, rate limits, accuracy and freshness were not reviewed. Endpoints are URLs, not separate APIs; many share one service.",
+  "licence": "CC BY 4.0: credit AgentPopulation and link https://agentpopulation.com",
+  "focus": "category in (\"Hydrology & Oceans\", \"Hazards\", \"Maritime\") AND NOT title matches /\\(\\)$/i AND title matches /\\b(hub.eau|usgs|noaa|nappes?|river|water|level|gauge|flow|discharge|tide|tidal|ocean|sea|wave|groundwater|well|flood|rain|hydro|lake|reservoir|stream|buoy|current|piezo|erddap|niveau|débit|pegel|wasser|coast|marine)/i",
+  "buckets": [
+    {
+      "id": "agent",
+      "name": "Agent tools",
+      "title": "River gauge and water-level lookups",
+      "filter": "tags has agent-ready AND tags has rivers AND title matches /river|water level|gauge|discharge|hydrology|waterway/i AND NOT url contains \"/erddap/info/\" AND NOT title matches /\\(\\)$/i",
+      "endpoints": 42576,
+      "notes": [
+        "14023 of these are ArcGIS map layers (river, water level, hydrology) rather than gauge readings."
+      ],
+      "criteria": "Services in this pack with the most endpoints that match this bucket and are tagged agent-ready (no key sent in the test call, JSON body, passed a data call). Ties go to the service with more country codes, then by name. Only services with at least one bucket row that matches the focus rule are listed, and the sample comes from those rows; the counts cover the whole bucket. The sample URL is the first row by URL sort after preferring, in this order: rows that match the bucket's sample preference when it has one, rows that return values rather than describe a dataset or a service (not ERDDAP /info/ pages, OGC GetCapabilities requests, bare OWS addresses, PxWeb tables, UN SDG series lists, Statistics Canada download pointers, WorldPop listings, GTFS validation reports, untitled rows or service root addresses), and agent-ready rows. Sample preference in this bucket: title matches /gauge/i. Services named \"ArcGIS organization\" hold map layers from many owners and are added only when fewer than 5 other services match.",
+      "services": [
+        {
+          "service": "UK Environment Agency data",
+          "display": "UK Environment Agency data",
+          "host": "environment.data.gov.uk",
+          "endpoints_in_bucket": 8841,
+          "endpoints_in_pack": 12115,
+          "country_codes": [
+            "GB"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 2,
+          "sample_url": "https://environment.data.gov.uk/hydrology/id/measures/cf26c254-b152-4c3e-892d-759284556293-rainfall-t-86400-mm-qualified/readings?latest",
+          "sample_title": "EA hydrology: Chantry Gauge",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "HubEau (French water data)",
+          "display": "HubEau (French water data)",
+          "host": "hubeau.eaufrance.fr",
+          "endpoints_in_bucket": 7289,
+          "endpoints_in_pack": 7289,
+          "country_codes": [
+            "FR"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=08316X0017/Z9&size=20&sort=desc",
+          "sample_title": "Hub'Eau groundwater level: Gaugeac (08316X0017/Z9)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "USGS Water Services",
+          "display": "USGS Water Services",
+          "host": "waterservices.usgs.gov",
+          "endpoints_in_bucket": 5070,
+          "endpoints_in_pack": 17067,
+          "country_codes": [
+            "GU",
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://waterservices.usgs.gov/nwis/iv/?format=json&sites=01010000&period=PT6H",
+          "sample_title": "USGS real-time: St. John River At Ninemile Bridge, Maine",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Doi",
+          "display": "Doi",
+          "host": "doi.org",
+          "endpoints_in_bucket": 1121,
+          "endpoints_in_pack": 3673,
+          "country_codes": [],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://doi.org/10.5066/F73X8556",
+          "sample_title": "Characterizing Uncertainty in Daily Streamflow Estimates at Ungauged Locations in Support of the Massachusetts Sustainable Yield Estimator: Data Release - Digital Data",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Open Meteo",
+          "display": "Open Meteo",
+          "host": "flood-api.open-meteo.com",
+          "endpoints_in_bucket": 835,
+          "endpoints_in_pack": 835,
+          "country_codes": [
+            "AD",
+            "AF",
+            "AG",
+            "AI",
+            "AO",
+            "AS",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BF",
+            "BG",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BS",
+            "BT",
+            "BW",
+            "BY",
+            "BZ",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CI",
+            "CK",
+            "CM",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "DJ",
+            "DM",
+            "DZ",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ET",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "GA",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HN",
+            "HT",
+            "IM",
+            "IQ",
+            "IR",
+            "JE",
+            "JM",
+            "JO",
+            "KE",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MY",
+            "MZ",
+            "NA",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NP",
+            "NR",
+            "NU",
+            "OM",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SL",
+            "SM",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TT",
+            "TV",
+            "TZ",
+            "UG",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://flood-api.open-meteo.com/v1/flood?latitude=-0.299&longitude=73.424&daily=river_discharge",
+          "sample_title": "Open-Meteo/GloFAS river discharge near Fuvahmulah, Maldives",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "NOAA CO-OPS tides and currents",
+          "display": "NOAA CO-OPS tides and currents",
+          "host": "api.tidesandcurrents.noaa.gov",
+          "endpoints_in_bucket": 818,
+          "endpoints_in_pack": 7098,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&datum=MLLW&station=1611400&product=water_level&units=metric&time_zone=gmt&format=json&application=AgentPopulation",
+          "sample_title": "NOAA CO-OPS Tides & Currents: CO-OPS latest water level JSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Wsv",
+          "display": "Wsv",
+          "host": "www.pegelonline.wsv.de",
+          "endpoints_in_bucket": 787,
+          "endpoints_in_pack": 791,
+          "country_codes": [
+            "DE"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 3,
+          "sample_url": "https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/0024cc40-d690-468d-84f9-4e9bf45d9108.json?includeTimeseries=true&includeCurrentMeasurement=true",
+          "sample_title": "PEGELONLINE water level: VERSEN TRENNSPITZE (DORTMUND-EMS-KANAL)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "hsi-sh.de",
+          "display": "hsi-sh.de",
+          "host": "hsi-sh.de",
+          "endpoints_in_bucket": 694,
+          "endpoints_in_pack": 2421,
+          "country_codes": [
+            "DE"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 2,
+          "sample_url": "https://hsi-sh.de/gw/od/10L01006001_w_messwerte.json",
+          "sample_title": "Groundwater level measuring point 5563 Flensburg Ochsenweg - ST01",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        }
+      ]
+    },
+    {
+      "id": "app",
+      "name": "App features",
+      "title": "Flood watch maps and tide cards",
+      "filter": "tags has floods OR tags has tides",
+      "endpoints": 43976,
+      "notes": [],
+      "criteria": "Services in this pack with the most endpoints that match this bucket and passed a data call. Ties go to the service with more country codes, then by name. Only services with at least one bucket row that matches the focus rule are listed, and the sample comes from those rows; the counts cover the whole bucket. The sample URL is the first row by URL sort after preferring, in this order: rows that match the bucket's sample preference when it has one, rows that return values rather than describe a dataset or a service (not ERDDAP /info/ pages, OGC GetCapabilities requests, bare OWS addresses, PxWeb tables, UN SDG series lists, Statistics Canada download pointers, WorldPop listings, GTFS validation reports, untitled rows or service root addresses), and agent-ready rows. Services named \"ArcGIS organization\" hold map layers from many owners and are added only when fewer than 5 other services match.",
+      "services": [
+        {
+          "service": "NOAA CO-OPS tides and currents",
+          "display": "NOAA CO-OPS tides and currents",
+          "host": "api.tidesandcurrents.noaa.gov",
+          "endpoints_in_bucket": 7098,
+          "endpoints_in_pack": 7098,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&datum=MLLW&station=1611400&product=water_level&units=metric&time_zone=gmt&format=json&application=AgentPopulation",
+          "sample_title": "NOAA CO-OPS Tides & Currents: CO-OPS latest water level JSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "UK Environment Agency data",
+          "display": "UK Environment Agency data",
+          "host": "environment.data.gov.uk",
+          "endpoints_in_bucket": 4753,
+          "endpoints_in_pack": 12115,
+          "country_codes": [
+            "GB",
+            "US"
+          ],
+          "formats": [
+            "json",
+            "csv"
+          ],
+          "formats_in_pack": 2,
+          "sample_url": "https://environment.data.gov.uk/KB6uNVj5ZcJr7jUP/ArcGIS/rest/services/Flood_Map_for_Planning/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&resultRecordCount=5&f=json",
+          "sample_title": "Flood Maps for Planning (Flood Zone 2, Flood Zone 3 and Flood Storage Areas)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Noaa",
+          "display": "Noaa",
+          "host": "opendap.co-ops.nos.noaa.gov",
+          "endpoints_in_bucket": 1017,
+          "endpoints_in_pack": 1017,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "xml",
+            "json"
+          ],
+          "formats_in_pack": 2,
+          "sample_url": "https://opendap.co-ops.nos.noaa.gov/erddap/info/IOOS_Air_Gap/index.json",
+          "sample_title": "ERDDAP COOPS-NOS: Air Gap",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "GIS WebTech (ArcGIS Online)",
+          "display": "GIS WebTech (ArcGIS Online)",
+          "host": "services6.arcgis.com",
+          "endpoints_in_bucket": 858,
+          "endpoints_in_pack": 873,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://services6.arcgis.com/BAJNi3EgCdtQ1BCG/arcgis/rest/services/2685%20Riverport%20RoadProperty%20Outline%20Publish185/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&resultRecordCount=5&f=json",
+          "sample_title": "2685 Riverport Road- property Outline",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Open Meteo",
+          "display": "Open Meteo",
+          "host": "flood-api.open-meteo.com",
+          "endpoints_in_bucket": 835,
+          "endpoints_in_pack": 835,
+          "country_codes": [
+            "AD",
+            "AF",
+            "AG",
+            "AI",
+            "AO",
+            "AS",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BF",
+            "BG",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BS",
+            "BT",
+            "BW",
+            "BY",
+            "BZ",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CI",
+            "CK",
+            "CM",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "DJ",
+            "DM",
+            "DZ",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ET",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "GA",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HN",
+            "HT",
+            "IM",
+            "IQ",
+            "IR",
+            "JE",
+            "JM",
+            "JO",
+            "KE",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MY",
+            "MZ",
+            "NA",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NP",
+            "NR",
+            "NU",
+            "OM",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SL",
+            "SM",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TT",
+            "TV",
+            "TZ",
+            "UG",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VU",
+            "WF",
+            "WS",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://flood-api.open-meteo.com/v1/flood?latitude=-0.299&longitude=73.424&daily=river_discharge",
+          "sample_title": "Open-Meteo/GloFAS river discharge near Fuvahmulah, Maldives",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Usgs",
+          "display": "Usgs",
+          "host": "data.usgs.gov",
+          "endpoints_in_bucket": 678,
+          "endpoints_in_pack": 11699,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "xml"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://data.usgs.gov/datacatalog/metadata/USGS.03a63300-4e2e-4ec9-a20c-e9666637fef6.xml",
+          "sample_title": "SIR2016-5029_cfwgoshor_6: Flood Inundation Depth for a Flow of 39,900 at the Gage Coast Fork Willamette River at Goshen, Oregon - Original Metadata",
+          "sample_format": "xml",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "NOAA GeoPlatform (ArcGIS Online)",
+          "display": "NOAA GeoPlatform (ArcGIS Online)",
+          "host": "services2.arcgis.com",
+          "endpoints_in_bucket": 383,
+          "endpoints_in_pack": 1076,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/arcgis/rest/services/1964_Flood_Dec_19_26_Precipitation/FeatureServer/0/query?where=1%3D1&outFields=*&returnGeometry=false&resultRecordCount=5&f=json",
+          "sample_title": "1964 Flood Dec 19-26 Precipitation",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Lsaurl",
+          "display": "Lsaurl",
+          "host": "hvz.lsaurl.de",
+          "endpoints_in_bucket": 372,
+          "endpoints_in_pack": 372,
+          "country_codes": [
+            "DE"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://hvz.lsaurl.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MLU/HVZ/KISTERS/data/internet/stations/BB/5530500/Q/week.json",
+          "sample_title": "Landesbetrieb fuer Hochwasserschutz und Wasserwirtschaft Sachsen-Anhalt (LHW): LHW HVZ WISKI web static JSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "grounding",
+      "name": "Grounding and data pipelines",
+      "title": "Ocean, tide and groundwater datasets",
+      "filter": "tags has oceans OR tags has groundwater OR format is csv",
+      "endpoints": 113774,
+      "notes": [
+        "44704 of these are ERDDAP dataset descriptions (/erddap/info/); the series needs a second request."
+      ],
+      "criteria": "Services in this pack with the most endpoints that match this bucket and passed a data call. Ties go to the service with more country codes, then by name. Only services with at least one bucket row that matches the focus rule are listed, and the sample comes from those rows; the counts cover the whole bucket. The sample URL is the first row by URL sort after preferring, in this order: rows that match the bucket's sample preference when it has one, rows that return values rather than describe a dataset or a service (not ERDDAP /info/ pages, OGC GetCapabilities requests, bare OWS addresses, PxWeb tables, UN SDG series lists, Statistics Canada download pointers, WorldPop listings, GTFS validation reports, untitled rows or service root addresses), and agent-ready rows. Sample preference in this bucket: NOT url contains \"/erddap/info/\". Services named \"ArcGIS organization\" hold map layers from many owners and are added only when fewer than 5 other services match.",
+      "services": [
+        {
+          "service": "GRIIDC ERDDAP (Gulf of Mexico)",
+          "display": "GRIIDC ERDDAP (Gulf of Mexico)",
+          "host": "erddap.griidc.org",
+          "endpoints_in_bucket": 11688,
+          "endpoints_in_pack": 11688,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://erddap.griidc.org/erddap/info/F2_x836_000_0005_Backscatter_SHELF_FMG_sonar_data/index.json",
+          "sample_title": "ERDDAP GRIIDC: Trajectory - F2.x836.000.0005 - Backscatter_SHELF_FMG_sonar_data - 28.53N, 84.26W - 2017-07-13",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Tamu",
+          "display": "Tamu",
+          "host": "gcoos5.geos.tamu.edu",
+          "endpoints_in_bucket": 7739,
+          "endpoints_in_pack": 7739,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json",
+            "xml"
+          ],
+          "formats_in_pack": 2,
+          "sample_url": "https://gcoos5.geos.tamu.edu/erddap/griddap/HFradar_TAMU_GERG.json?time%5Blast%5D",
+          "sample_title": "TAMU (ERDDAP gcoos5.geos.tamu.edu): ERDDAP griddap (latest time axis value JSON)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Usgs",
+          "display": "Usgs",
+          "host": "data.usgs.gov",
+          "endpoints_in_bucket": 5392,
+          "endpoints_in_pack": 11699,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "xml"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://data.usgs.gov/datacatalog/metadata/USGS.0000a76f-c6be-4366-8be3-6f8487442e8a.xml",
+          "sample_title": "Raw HYPACK navigation logs (text) collected by the U.S. Geological Survey - St. Petersburg Coastal and Marine Science Center offshore of the Gulf Islands, MS, 2010 - Original Metadata",
+          "sample_format": "xml",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Glos",
+          "display": "Glos",
+          "host": "seagull-erddap.glos.org",
+          "endpoints_in_bucket": 3619,
+          "endpoints_in_pack": 3619,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://seagull-erddap.glos.org/erddap/info/45001_archive/index.json",
+          "sample_title": "National Data Buoy Center (ERDDAP seagull-erddap.glos.org): ERDDAP info (dataset metadata JSON)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Noaa",
+          "display": "Noaa",
+          "host": "data.ngdc.noaa.gov",
+          "endpoints_in_bucket": 3261,
+          "endpoints_in_pack": 3261,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "csv",
+            "xml"
+          ],
+          "formats_in_pack": 2,
+          "sample_url": "https://data.ngdc.noaa.gov/platforms/ocean/nos/coast/B00001-B02000/B00002/GEODAS/B00002.a93.gz",
+          "sample_title": "B00002: NOS Hydrographic Survey , 1984-11-18 - B00002.a93.gz",
+          "sample_format": "csv",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "USGS Water Services",
+          "display": "USGS Water Services",
+          "host": "waterservices.usgs.gov",
+          "endpoints_in_bucket": 3175,
+          "endpoints_in_pack": 17067,
+          "country_codes": [
+            "PR",
+            "US"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://waterservices.usgs.gov/nwis/dv/?format=json&sites=01411318&period=P30D",
+          "sample_title": "USGS National Water Information System: NWIS daily values (30 days JSON)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "HubEau (French water data)",
+          "display": "HubEau (French water data)",
+          "host": "hubeau.eaufrance.fr",
+          "endpoints_in_bucket": 3174,
+          "endpoints_in_pack": 7289,
+          "country_codes": [
+            "FR"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://hubeau.eaufrance.fr/api/v1/niveaux_nappes/chroniques?code_bss=00035X0210/PZO1&size=20&sort=desc",
+          "sample_title": "Hub'Eau groundwater level: Saint-Georges-sur-l'Aa (00035X0210/PZO1)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-14"
+        },
+        {
+          "service": "Bodc",
+          "display": "Bodc",
+          "host": "erddap.bodc.ac.uk",
+          "endpoints_in_bucket": 2529,
+          "endpoints_in_pack": 2529,
+          "country_codes": [
+            "GB"
+          ],
+          "formats": [
+            "json"
+          ],
+          "formats_in_pack": 1,
+          "sample_url": "https://erddap.bodc.ac.uk/erddap/info/10007_0210S_CTD/index.json",
+          "sample_title": "Marine Scotland Science (ERDDAP erddap.bodc.ac.uk): ERDDAP info (dataset metadata JSON)",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "evals",
+      "name": "Evals and testing",
+      "title": "Varied responses for tool-call tests",
+      "filter": "the whole pack",
+      "endpoints": 279947,
+      "notes": [],
+      "criteria": "Services in this pack that returned the most different formats, then the most endpoints that passed a data call, then by name: a mix of response shapes to test parsers and tool calls. Only services with at least one bucket row that matches the focus rule are listed, and the sample comes from those rows; the counts cover the whole bucket. The sample URL is the first row by URL sort after preferring, in this order: rows that match the bucket's sample preference when it has one, rows that return values rather than describe a dataset or a service (not ERDDAP /info/ pages, OGC GetCapabilities requests, bare OWS addresses, PxWeb tables, UN SDG series lists, Statistics Canada download pointers, WorldPop listings, GTFS validation reports, untitled rows or service root addresses), and agent-ready rows. Services named \"ArcGIS organization\" hold map layers from many owners and are added only when fewer than 5 other services match.",
+      "services": [
+        {
+          "service": "Caribbeanmarineatlas",
+          "display": "Caribbeanmarineatlas",
+          "host": "www.caribbeanmarineatlas.net",
+          "endpoints_in_bucket": 684,
+          "endpoints_in_pack": 684,
+          "country_codes": [],
+          "formats": [
+            "zip",
+            "xml",
+            "json",
+            "geojson",
+            "csv"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://www.caribbeanmarineatlas.net/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typename=geonode%3Aa__014_001_wcmc007_turtlenestingsites1999_v1_1&outputFormat=json&srs=EPSG%3A4326&srsName=EPSG%3A4326",
+          "sample_title": "TV_Global Distribution of Sea Turtle Nesting Sites (1999) - a__014_001_wcmc007_turtlenestingsites1999_v1_1.json",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Canadian Urban Data Catalogue (CUDC)",
+          "display": "Canadian Urban Data Catalogue (CUDC)",
+          "host": "geohub.saskatchewan.ca",
+          "endpoints_in_bucket": 520,
+          "endpoints_in_pack": 520,
+          "country_codes": [
+            "CA"
+          ],
+          "formats": [
+            "csv",
+            "xml",
+            "json",
+            "geojson",
+            "zip"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://geohub.saskatchewan.ca/api/download/v1/items/21bfb31dc2a3490e9fcc3de695343424/geojson?layers=0",
+          "sample_title": "Lake Water Geochemistry - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "Napsgfoundation",
+          "display": "Napsgfoundation",
+          "host": "prep-response-portal.napsgfoundation.org",
+          "endpoints_in_bucket": 452,
+          "endpoints_in_pack": 452,
+          "country_codes": [],
+          "formats": [
+            "csv",
+            "xml",
+            "geojson",
+            "json",
+            "zip"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://prep-response-portal.napsgfoundation.org/api/download/v1/items/3428672decd64aeabcb8da15e9b749f0/geojson?layers=0",
+          "sample_title": "USA Detailed Streams - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "ArcGIS Online: Vegetation",
+          "display": "ArcGIS Online: Vegetation",
+          "host": "data-cdfw.opendata.arcgis.com",
+          "endpoints_in_bucket": 372,
+          "endpoints_in_pack": 372,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "csv",
+            "xml",
+            "json",
+            "geojson",
+            "zip"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://data-cdfw.opendata.arcgis.com/api/download/v1/items/117a99c8745a48c6a48bac70005b1b11/geojson?layers=0",
+          "sample_title": "California Marine Protected Areas [ds582] - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "ArcGIS Online: opendata",
+          "display": "ArcGIS Online: opendata",
+          "host": "opendata-daerani.hub.arcgis.com",
+          "endpoints_in_bucket": 355,
+          "endpoints_in_pack": 355,
+          "country_codes": [
+            "GB"
+          ],
+          "formats": [
+            "csv",
+            "json",
+            "xml",
+            "geojson",
+            "zip"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://opendata-daerani.hub.arcgis.com/api/download/v1/items/0ee76793c9584d2a908fd902f724534b/geojson?layers=0",
+          "sample_title": "River Water Quality Monitoring 1990 to 2024 - Conductivity - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "California Natural Resources Agency Open",
+          "display": "California Natural Resources Agency Open",
+          "host": "gis.data.cnra.ca.gov",
+          "endpoints_in_bucket": 242,
+          "endpoints_in_pack": 242,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "csv",
+            "json",
+            "xml",
+            "geojson",
+            "zip"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://gis.data.cnra.ca.gov/api/download/v1/items/044bb017785449d3a3fe334923930c7a/geojson?layers=0",
+          "sample_title": "i07 Water Shortage Vulnerability Sections - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "data.gov.au",
+          "display": "data.gov.au",
+          "host": "datahub.moretonbay.qld.gov.au",
+          "endpoints_in_bucket": 215,
+          "endpoints_in_pack": 215,
+          "country_codes": [
+            "AU"
+          ],
+          "formats": [
+            "json",
+            "csv",
+            "geojson",
+            "zip",
+            "xml"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://datahub.moretonbay.qld.gov.au/api/download/v1/items/1a69bf67f3b24138ab5aa726f350e7f8/geojson?layers=0",
+          "sample_title": "MBRC Planning Scheme - Flood Hazard Overlay - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        },
+        {
+          "service": "data.gis.ny.gov",
+          "display": "data.gis.ny.gov",
+          "host": "data.gis.ny.gov",
+          "endpoints_in_bucket": 81,
+          "endpoints_in_pack": 81,
+          "country_codes": [
+            "US"
+          ],
+          "formats": [
+            "json",
+            "zip",
+            "csv",
+            "geojson",
+            "xml"
+          ],
+          "formats_in_pack": 5,
+          "sample_url": "https://data.gis.ny.gov/api/download/v1/items/258fe1be90ff48f385a546cdfd998e24/geojson?layers=1",
+          "sample_title": "Water Quality Classifications (Line) - GeoJSON",
+          "sample_format": "json",
+          "sample_last_tested": "2026-11-15"
+        }
+      ]
+    }
+  ]
+}

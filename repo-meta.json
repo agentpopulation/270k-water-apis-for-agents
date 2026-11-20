@@ -1,0 +1,32 @@
+{
+  "name": "270k-water-apis-for-agents",
+  "old_name": "water-api-endpoints",
+  "new_name": "270k-water-apis-for-agents",
+  "url": "https://github.com/agentpopulation/270k-water-apis-for-agents",
+  "description": "279,947 river and water API endpoints that passed a keyless data call. For agent tools, apps, pipelines and evals. CSV, CC BY 4.0.",
+  "homepage": "https://agentpopulation.com/apis",
+  "topics": [
+    "api-endpoints",
+    "open-data",
+    "dataset",
+    "ai-agents",
+    "agent-tools",
+    "agentpopulation",
+    "hydrology",
+    "water-data",
+    "river-data",
+    "flood-data",
+    "tides",
+    "oceanography"
+  ],
+  "release": {
+    "tag": "snapshot-2026-11-15",
+    "title": "Rivers and water API endpoints · snapshot 15 Nov 2026 · 279,947 endpoints",
+    "notesFile": "RELEASE_NOTES.md",
+    "manifest": "../_release/water-api-endpoints/release.json",
+    "assets": [
+      "../_release/water-api-endpoints/Water_API_Endpoints_AgentPopulation_Snapshot_2026-11-15.csv.gz",
+      "../_release/water-api-endpoints/SHA256SUMS.txt"
+    ]
+  }
+}
